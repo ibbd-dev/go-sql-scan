@@ -41,10 +41,11 @@ func descTable(conf *DbConf, table_name string) []Field {
 	}
 	defer rows.Close()
 
+	var tmp sql.NullString
 	tables := []Field{}
 	for rows.Next() {
 		f := Field{}
-		err = rows.Scan(&f.Field, &f.Type, &f.Null)
+		err = rows.Scan(&f.Field, &f.Type, &f.Null, &tmp, &tmp, &tmp)
 		//err = rows.Scan(&f.Field, &f.Type, &f.Null, &f.Key, &f.Default, &f.Extra)
 		if err != nil {
 			panic(err.Error())
