@@ -14,6 +14,8 @@ USAGE
 OPTIONS
     -d, -database
         数据库名字
+    -c, -charset
+        数据库的编码，默认为：utf8
     -u, -user
         数据库的用户名
     -p, -password
