@@ -17,4 +17,6 @@ func TestDescTable(t *testing.T) {
 
 	table := descTable(conf, "ad_plan")
 	fmt.Printf("%+x\n", table)
+	fmt.Println(table)
+	fmt.Println(table[0].Field)
 }

@@ -19,9 +19,7 @@ type Field struct {
 	Field   string
 	Type    string
 	Null    string
-	Key     string
-	Default string
-	Extra   string
+	Default sql.NullString
 }
 
 func descTable(conf *DbConf, table_name string) []Field {
@@ -45,7 +43,7 @@ func descTable(conf *DbConf, table_name string) []Field {
 	tables := []Field{}
 	for rows.Next() {
 		f := Field{}
-		err = rows.Scan(&f.Field, &f.Type, &f.Null, &tmp, &tmp, &tmp)
+		err = rows.Scan(&f.Field, &f.Type, &f.Null, &tmp, &f.Default, &tmp)
 		//err = rows.Scan(&f.Field, &f.Type, &f.Null, &f.Key, &f.Default, &f.Extra)
 		if err != nil {
 			panic(err.Error())
