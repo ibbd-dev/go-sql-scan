@@ -22,6 +22,8 @@ OPTIONS
         数据库密码
     -h, -host
         数据库的host，默认为：127.0.0.1
+    -r, -port
+        数据库的端口号，默认为：3306
     -v, -version
         Print version and exit.
     -h, -help

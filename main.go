@@ -9,11 +9,13 @@ import (
 func main() {
 	log.SetFlags(0)
 
+	// 命令参数设置
 	database := flag.String("d", "", "")
 	charset := flag.String("c", "utf8", "")
-	username := flag.String("p", "", "")
-	password := flag.String("u", "", "")
+	username := flag.String("u", "", "")
+	password := flag.String("p", "", "")
 	host := flag.String("o", "127.0.0.1", "")
+	port := flag.Int("r", 3306, "")
 	version := flag.Bool("v", false, "")
 	help := flag.Bool("h", false, "")
 	flag.StringVar(database, "database", "", "")
@@ -21,6 +23,7 @@ func main() {
 	flag.StringVar(username, "username", "", "")
 	flag.StringVar(password, "password", "", "")
 	flag.StringVar(host, "host", "127.0.0.1", "")
+	flag.IntVar(port, "port", 3306, "")
 	flag.BoolVar(version, "version", false, "")
 	flag.BoolVar(help, "help", false, "")
 	flag.Usage = func() { log.Println(usageText) } // call on flag error
@@ -33,6 +36,7 @@ func main() {
 		fmt.Printf("username: %s\n", *username)
 		fmt.Printf("password: %s\n", *password)
 		fmt.Printf("host: %s\n", *host)
+		fmt.Printf("port: %d\n", *port)
 		fmt.Println("**********************************")
 	}
 

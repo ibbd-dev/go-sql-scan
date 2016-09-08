@@ -44,7 +44,6 @@ func descTable(conf *DbConf, table_name string) []Field {
 	for rows.Next() {
 		f := Field{}
 		err = rows.Scan(&f.Field, &f.Type, &f.Null, &tmp, &f.Default, &tmp)
-		//err = rows.Scan(&f.Field, &f.Type, &f.Null, &f.Key, &f.Default, &f.Extra)
 		if err != nil {
 			panic(err.Error())
 		}
