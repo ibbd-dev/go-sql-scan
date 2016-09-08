@@ -10,6 +10,7 @@ import (
 type fieldToken struct {
 	Name string
 	Type string
+	Tag  string
 }
 
 type structToken struct {
@@ -17,7 +18,21 @@ type structToken struct {
 	Fields []fieldToken
 }
 
-func parseFile(source, tablename string, fields []Field) ([]structToken, error) {
+// 表查询结构
+type tableQuery struct {
+	Name   string
+	Fields []fieldQuery
+}
+
+// 单个查询字段的定义
+type fieldQuery struct {
+	structName string // 在结构体中的名字
+	tableName  string // 在数据表中的名字
+	fieldType  string // 字段类型，golang中的类型
+}
+
+// 解释一个文件
+func parseFile(source string) ([]structToken, error) {
 	structToks := make([]structToken, 0, 8)
 
 	fset := token.NewFileSet()
@@ -56,6 +71,7 @@ func parseFile(source, tablename string, fields []Field) ([]structToken, error) 
 				// get field name (or names because multiple vars can be declared in 1 line)
 				for i, fieldName := range fieldLine.Names {
 					fieldToks[i].Name = parseIdent(fieldName)
+					fieldToks[i].Tag = fieldLine.Tag.Value
 				}
 
 				var fieldType string

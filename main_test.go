@@ -18,16 +18,16 @@ func getTestFields() []Field {
 	return descTable(conf, "ad_plan")
 }
 
-func TestDescTable(t *testing.T) {
+func _TestDescTable(t *testing.T) {
 	table := getTestFields()
 	fmt.Println(table)
 	fmt.Println(table[0].Field)
 }
 
 func TestParseFile(t *testing.T) {
-	fields := getTestFields()
+	//fields := getTestFields()
 	filename := "./examples/hello/models.go"
-	tokens, err := parseFile(filename, "ad_plan", fields)
+	tokens, err := parseFile(filename)
 	if err != nil {
 		t.Fatal(err)
 	}

@@ -1,11 +1,11 @@
 package hello
 
-type Table1 struct {
-	Name         string `value:"table_name"`
-	SelectFields string `value:"field1,field2"`
+type AdPlan struct {
+	Name         string `value:"ad_plan"`
+	SelectFields string `value:"account_id,name"`
 }
 
-type Table2 struct {
-	Name         string `value:"table_name"`
-	SelectFields string `value:"field1,field2"`
+type AdProject struct {
+	Name         string `value:"ad_project"`
+	SelectFields string `value:"id,plan_id"`
 }
